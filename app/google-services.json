@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "135568280589",
+    "project_id": "doctruyentranh-9b327",
+    "storage_bucket": "doctruyentranh-9b327.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135568280589:android:6a36e8bbf6273927e65944",
+        "android_client_info": {
+          "package_name": "com.example.assignmnet_networking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135568280589-34qstf4kdea1muflgoqm43f204kvlab0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6ZVI5oMyAxpkDrb__RYMGDuDCTnivaa4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135568280589-34qstf4kdea1muflgoqm43f204kvlab0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

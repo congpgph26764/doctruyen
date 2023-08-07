@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Assignmnet_Networking" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="android:statusBarColor">@android:color/white</item>
+
+        <!-- StatusBar Text Color -->
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="android:windowBackground">#ffff</item>
+
+
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowEnterTransition">@transition/transition</item>
+        <item name="android:windowExitTransition">@transition/transition</item>
+
+        <item name="android:windowSharedElementEnterTransition">
+            @transition/transition</item>
+        <item name="android:windowSharedElementExitTransition">
+            @transition/transition</item>
+
+    </style>
+
+    <style name="Theme.Assignmnet_Networking" parent="Base.Theme.Assignmnet_Networking" />
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/silde_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/silde_out_bottom</item>
+    </style>
+</resources>
