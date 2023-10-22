@@ -81,7 +81,6 @@ public class TruyenTranhAdapter extends RecyclerView.Adapter<TruyenTranhHolder> 
 
     public void filterList(ArrayList<TruyenTranh> filteredList){
         list = filteredList;
-        notifyDataSetChanged();
     }
 
     public interface Callback{

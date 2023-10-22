@@ -66,7 +66,7 @@ public class ChiTietTruyen extends AppCompatActivity {
     private RecyclerView rcvBinhLuan;
     private List<BinhLuan> list;
     private BinhLuanAdapter adapter;
-    public static final String URL = "http://10.24.31.43:3000/api/";
+    public static final String URL = "http://192.168.148.107:3000/api/";
 
     private String truyenTranhId = "";
     private String truyenTranhName = "";

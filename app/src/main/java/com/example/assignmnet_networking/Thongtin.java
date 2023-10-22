@@ -59,7 +59,7 @@ public class Thongtin extends AppCompatActivity {
 
     private Retrofit retrofit ;
     private ServiceNguoiDung serviceNguoiDung;
-    public static final String URL = "http://10.24.31.43:3000/api/";
+    public static final String URL = "http://192.168.148.107:3000/api/";
 
     private List<NguoiDung> list;
 

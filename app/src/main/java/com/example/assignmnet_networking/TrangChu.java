@@ -48,7 +48,7 @@ public class TrangChu extends AppCompatActivity implements TruyenTranhAdapter.Ca
     private ImageView imgAvatar;
     private Retrofit retrofit ;
     private ServiceTruyenTranh serviceTruyenTranh;
-    public static final String URL = "http://10.24.31.43:3000/api/";
+    public static final String URL = "http://192.168.148.107:3000/api/";
 
     private String userId ="";
     private String fullname ="";

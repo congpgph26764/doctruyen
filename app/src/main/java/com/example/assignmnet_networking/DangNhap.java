@@ -11,9 +11,13 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.assignmnet_networking.model.LoginResponse;
+import com.example.assignmnet_networking.model.NguoiDung;
 import com.example.assignmnet_networking.service.ServiceNguoiDung;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,7 +31,7 @@ public class DangNhap extends AppCompatActivity {
     TextInputLayout textinput_layout_username, textinput_layout_password;
     private Retrofit retrofit ;
     private ServiceNguoiDung serviceNguoiDung;
-    public static final String URL = "http://10.24.31.43:3000/api/";
+    public static final String URL = "http://192.168.148.107:3000/api/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +42,6 @@ public class DangNhap extends AppCompatActivity {
         textinput_edittext_password = findViewById(R.id.textinput_edittext_password);
         textinput_layout_username = findViewById(R.id.textinput_layout_username);
         textinput_layout_password = findViewById(R.id.textinput_layout_password);
-
-
 
         findViewById(R.id.btnLogin).setOnClickListener(v ->{
 

@@ -52,7 +52,7 @@ public class DangKy extends AppCompatActivity {
     private List<NguoiDung> list;
     private Retrofit retrofit ;
     private ServiceNguoiDung serviceNguoiDung;
-    public static final String URL = "http://10.24.31.43:3000/api/";
+    public static final String URL = "http://192.168.148.107:3000/api/";
 
     String img = "";
     Uri imageUri;
@@ -81,7 +81,6 @@ public class DangKy extends AppCompatActivity {
         textinputEdittextUsername = (TextInputEditText) findViewById(R.id.textinput_edittext_username);
         textinputLayoutPassword = (TextInputLayout) findViewById(R.id.textinput_layout_password);
         textinputEdittextPassword = (TextInputEditText) findViewById(R.id.textinput_edittext_password);
-        imgAvatar = (ImageView) findViewById(R.id.imgAvatar);
         textinputLayoutFullname = (TextInputLayout) findViewById(R.id.textinput_layout_fullname);
         textinputEdittextFullname = (TextInputEditText) findViewById(R.id.textinput_edittext_fullname);
         textinputLayoutEmail = (TextInputLayout) findViewById(R.id.textinput_layout_email);
@@ -103,10 +102,6 @@ public class DangKy extends AppCompatActivity {
 
             startActivity(new Intent(this, DangNhap.class),
                     options.toBundle());
-        });
-
-        findViewById(R.id.cvImage).setOnClickListener(v ->{
-            openGallery();
         });
     }
 
@@ -220,71 +215,35 @@ public class DangKy extends AppCompatActivity {
 
     private void dangKy(){
 
-        progressDialog.show();
+        NguoiDung nguoiDung = new NguoiDung();
+        nguoiDung.setUsername(textinputEdittextUsername.getText().toString());
+        nguoiDung.setPassword(textinputEdittextPassword.getText().toString());
+        nguoiDung.setAvatar("");
+        nguoiDung.setFullname(textinputEdittextFullname.getText().toString());
+        nguoiDung.setEmail(textinputEdittextEmail.getText().toString());
 
-        String imageName = "image_" + System.currentTimeMillis() + ".jpg";
+        retrofit = new Retrofit.Builder().baseUrl(URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("images/" + imageName);
+        serviceNguoiDung = retrofit.create(ServiceNguoiDung.class);
 
-        storageRef.putFile(imageUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+        Call<NguoiDung> call = serviceNguoiDung.postData(nguoiDung);
+        call.enqueue(new Callback<NguoiDung>() {
+            @Override
+            public void onResponse(Call<NguoiDung> call, Response<NguoiDung> response) {
+                if (response.isSuccessful()) {
+                    progressDialog.dismiss();
+                    Toast.makeText(DangKy.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(DangKy.this, DangNhap.class));
+                }
+            }
 
-                        taskSnapshot.getStorage().getDownloadUrl()
-                                .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        String imageURL = uri.toString();
-                                        Log.d("ImageURL", imageURL);
-
-                                        NguoiDung nguoiDung = new NguoiDung();
-                                        nguoiDung.setUsername(textinputEdittextUsername.getText().toString());
-                                        nguoiDung.setPassword(textinputEdittextPassword.getText().toString());
-                                        nguoiDung.setAvatar(imageURL);
-                                        nguoiDung.setFullname(textinputEdittextFullname.getText().toString());
-                                        nguoiDung.setEmail(textinputEdittextEmail.getText().toString());
-
-                                        retrofit = new Retrofit.Builder().baseUrl(URL)
-                                                .addConverterFactory(GsonConverterFactory.create())
-                                                .build();
-
-                                        serviceNguoiDung = retrofit.create(ServiceNguoiDung.class);
-
-                                        Call<NguoiDung> call = serviceNguoiDung.postData(nguoiDung);
-                                        call.enqueue(new Callback<NguoiDung>() {
-                                            @Override
-                                            public void onResponse(Call<NguoiDung> call, Response<NguoiDung> response) {
-                                                if (response.isSuccessful()) {
-                                                    progressDialog.dismiss();
-                                                    Toast.makeText(DangKy.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                                                    startActivity(new Intent(DangKy.this, DangNhap.class));
-                                                }
-                                            }
-
-                                            @Override
-                                            public void onFailure(Call<NguoiDung> call, Throwable t) {
-                                                Log.e("RetrofitError", "Error: " + t.getMessage());
-                                            }
-                                        });
-
-
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception exception) {
-                                        Log.e("ImageURL", "Failed to get download URL.");
-                                    }
-                                });
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("Upload", "Upload failed: " + e.getMessage());
-                    }
-                });
+            @Override
+            public void onFailure(Call<NguoiDung> call, Throwable t) {
+                Log.e("RetrofitError", "Error: " + t.getMessage());
+            }
+        });
 
     }
 }

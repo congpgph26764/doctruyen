@@ -75,25 +75,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvImage"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:layout_marginTop="30dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textinput_layout_password"
-                app:cardCornerRadius="200dp"
-                app:cardElevation="10dp">
-
-                <ImageView
-                    android:id="@+id/imgAvatar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@mipmap/ic_launcher"/>
-
-            </androidx.cardview.widget.CardView>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textinput_layout_fullname"
                 android:layout_width="match_parent"
@@ -102,7 +83,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvImage"
+                app:layout_constraintTop_toBottomOf="@+id/textinput_layout_password"
                 android:hint="Họ tên">
 
                 <com.google.android.material.textfield.TextInputEditText
