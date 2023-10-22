@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.assignmnet_networking.api.API;
 import com.example.assignmnet_networking.model.NguoiDung;
 import com.example.assignmnet_networking.model.TruyenTranh;
 import com.example.assignmnet_networking.service.ServiceNguoiDung;
@@ -52,7 +53,7 @@ public class DangKy extends AppCompatActivity {
     private List<NguoiDung> list;
     private Retrofit retrofit ;
     private ServiceNguoiDung serviceNguoiDung;
-    public static final String URL = "http://192.168.148.107:3000/api/";
+    private static final String URL = API.URL;
 
     String img = "";
     Uri imageUri;

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.assignmnet_networking.adapter.ImageAdapter;
 import com.example.assignmnet_networking.adapter.TruyenTranhAdapter;
+import com.example.assignmnet_networking.api.API;
 import com.example.assignmnet_networking.model.Image;
 import com.example.assignmnet_networking.model.TruyenTranh;
 import com.example.assignmnet_networking.service.ServiceImage;
@@ -37,7 +38,7 @@ public class DocTruyen extends AppCompatActivity {
 
     private Retrofit retrofit ;
     private ServiceImage serviceImage;
-    public static final String URL = "http://192.168.148.107:3000/api/";
+    private static final String URL = API.URL;
 
     private String truyenTranhId = "";
     private String truyenTranhName = "";

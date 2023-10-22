@@ -32,6 +32,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.assignmnet_networking.adapter.BinhLuanAdapter;
 import com.example.assignmnet_networking.adapter.TruyenTranhAdapter;
+import com.example.assignmnet_networking.api.API;
 import com.example.assignmnet_networking.model.BinhLuan;
 import com.example.assignmnet_networking.model.Image;
 import com.example.assignmnet_networking.model.TruyenTranh;
@@ -66,7 +67,7 @@ public class ChiTietTruyen extends AppCompatActivity {
     private RecyclerView rcvBinhLuan;
     private List<BinhLuan> list;
     private BinhLuanAdapter adapter;
-    public static final String URL = "http://192.168.148.107:3000/api/";
+    private static final String URL = API.URL;
 
     private String truyenTranhId = "";
     private String truyenTranhName = "";

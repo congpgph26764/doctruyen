@@ -27,6 +27,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.assignmnet_networking.adapter.TruyenTranhAdapter;
+import com.example.assignmnet_networking.api.API;
 import com.example.assignmnet_networking.model.TruyenTranh;
 import com.example.assignmnet_networking.service.ServiceTruyenTranh;
 
@@ -39,20 +40,20 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class TrangChu extends AppCompatActivity implements TruyenTranhAdapter.Callback{
+public class TrangChu extends AppCompatActivity implements TruyenTranhAdapter.Callback {
 
     private RecyclerView rcvTruyen;
     private List<TruyenTranh> truyenTranhList;
     private TruyenTranhAdapter adapter;
     private EditText edtSearch;
     private ImageView imgAvatar;
-    private Retrofit retrofit ;
+    private Retrofit retrofit;
     private ServiceTruyenTranh serviceTruyenTranh;
-    public static final String URL = "http://192.168.148.107:3000/api/";
+    private static final String URL = API.URL;
 
-    private String userId ="";
-    private String fullname ="";
-    private String avatar ="";
+    private String userId = "";
+    private String fullname = "";
+    private String avatar = "";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -111,13 +112,13 @@ public class TrangChu extends AppCompatActivity implements TruyenTranhAdapter.Ca
             }
         });
 
-        findViewById(R.id.btnThongtin).setOnClickListener(v ->{
+        findViewById(R.id.btnThongtin).setOnClickListener(v -> {
             startActivity(new Intent(this, Thongtin.class),
                     ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         });
     }
 
-    private void getList(){
+    private void getList() {
 
         retrofit = new Retrofit.Builder().baseUrl(URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -141,7 +142,7 @@ public class TrangChu extends AppCompatActivity implements TruyenTranhAdapter.Ca
         });
     }
 
-    private void getData(List<TruyenTranh> list ){
+    private void getData(List<TruyenTranh> list) {
         adapter = new TruyenTranhAdapter(list, this, this);
         adapter.reverseList();
         truyenTranhList = new ArrayList<>(list);
@@ -150,7 +151,7 @@ public class TrangChu extends AppCompatActivity implements TruyenTranhAdapter.Ca
 
     private void filter(String text) {
         ArrayList<TruyenTranh> filteredList = new ArrayList<>();
-        for (TruyenTranh truyenTranh: truyenTranhList){
+        for (TruyenTranh truyenTranh : truyenTranhList) {
             if (truyenTranh.getName().toLowerCase().contains(text.toLowerCase())) {
                 filteredList.add(truyenTranh);
             }

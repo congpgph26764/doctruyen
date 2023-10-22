@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.assignmnet_networking.api.API;
 import com.example.assignmnet_networking.model.LoginResponse;
 import com.example.assignmnet_networking.model.NguoiDung;
 import com.example.assignmnet_networking.service.ServiceNguoiDung;
@@ -31,7 +32,7 @@ public class DangNhap extends AppCompatActivity {
     TextInputLayout textinput_layout_username, textinput_layout_password;
     private Retrofit retrofit ;
     private ServiceNguoiDung serviceNguoiDung;
-    public static final String URL = "http://192.168.148.107:3000/api/";
+    private static final String URL = API.URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
